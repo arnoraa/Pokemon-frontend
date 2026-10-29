@@ -6,17 +6,17 @@ fetch("http://localhost:3000/dashboard/types")
         return response.json();
     })
     .then(statistics => {
-        const labels = [];
-        const amounts = [];
+        const primaryTypeNames = [];
+        const amountOfEachType = [];
 
         statistics.forEach(statistic => {
-            labels.push(statistic.primary_type);
-            amounts.push(statistic.antal);
+            primaryTypeNames.push(statistic.primary_type);
+            amountOfEachType.push(statistic.antal);
         });
 
-        const canvas = document.getElementById("types");
+        const primaryTypeChart = document.getElementById("types");
 
-        new Chart(canvas, {
+        new Chart(primaryTypeChart, {
     type: "bar",
     data: {
         labels: ["Water", "Normal", "Poison", "Grass", "Fire", "Bug", "Electric","Rock","Ground","Psychic","Fighting","Ghost","Dragon","Fairy","Ice"],
