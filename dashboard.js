@@ -23,7 +23,7 @@ fetch("http://localhost:3000/dashboard/types")
         datasets: [{
             label: "Number of each Primary Type",
             data: [28, 22, 14, 12, 12, 12, 9, 9, 8, 8, 7, 3, 3, 2, 2],
-            backgroundColor: ["blue", "lightgrey","purple","green","red","dark","yellow", "brown", "darkgrey", ""]
+            backgroundColor: ["dodgerblue", "tan","purple","limegreen","orange","yellowgreen","gold", "peru", "goldenrod", "hotpink","firebrick","indigo","slateblue","pink","powderblue"]
         }]
     }
 })
