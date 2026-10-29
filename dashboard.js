@@ -19,7 +19,7 @@ fetch("http://localhost:3000/dashboard/types")
         new Chart(primaryTypeChart, {
     type: "bar",
     data: {
-        labels: ["Water", "Normal", "Poison", "Grass", "Fire", "Bug", "Electric","Rock","Ground","Psychic","Fighting","Ghost","Dragon","Fairy","Ice"],
+        labels: primaryTypeNames,
         datasets: [{
             label: "Primary Types",
             data: [28, 22, 14, 12, 12, 12, 9, 9, 8, 8, 7, 3, 3, 2, 2],
