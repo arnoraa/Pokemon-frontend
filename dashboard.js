@@ -14,7 +14,7 @@ fetch("http://localhost:3000/dashboard/types")
             amounts.push(statistic.antal);
         });
 
-        const canvas = document.getElementById("typeChart");
+        const canvas = document.getElementById("types");
 
         new Chart(canvas, {
     type: "bar",

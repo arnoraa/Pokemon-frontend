@@ -8,16 +8,47 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
 </head>
+<header>
+    <nav>
+        <a href="index.html" > Forside </a>
+        <a href="pokemon.html" > Pokemon</a>
+        <a href="trainers.html"> Trainers </a>
+    </nav>
+</header>
 <body>
     <h1>Dashboard</h1>
 
         <section>
             <h2>Antal Pokémon pr. type</h2>
 
-            <div class="chart-container">
-                <canvas id="typeChart"></canvas>
+            <div class="type-container">
+                <canvas id="types"></canvas>
             </div>
         </section>
+
+    <section>
+        <h2>De 5 Pokémon med laveste stats</h2>
+
+        <div class="lowest-stat-container">
+            <canvas id="lowest-stat"></canvas>
+        </div>
+    </section>
+
+    <section>
+        <h2>De 5 hurtigste Pokémon</h2>
+
+        <div class="fastest-container">
+            <canvas id="fastest-pokemon"></canvas>
+        </div>
+    </section>
+
+    <section>
+        <h2>Pokémon på Route 25</h2>
+
+        <div class="route25-container">
+            <canvas id="route25"></canvas>
+        </div>
+    </section>
 
 </body>
 </html>
