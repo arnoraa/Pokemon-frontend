@@ -1,43 +1,60 @@
-async function hentPokemon() {
-    const type = document.getElementById("type-filter").value;
-    const minAttack = document.getElementById("attack-filter").value;
 
-    const values = new URLsearchValues();
-
-    if (type) {
-        values.append("type", type);
-    }
-
-    if (minAttack !== "") {
-        values.append("minAttack", minAttack);
-    }
-    const url = `https://localhost:3000/api/pokemon?${values.toString()}`;
-
-    try {
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error("Kunne ikke hente Pokémon");
-        }
-
-        const pokemon = await response.json();
-        const liste = document.getElementById("pokemon-liste");
-
-        liste.replaceChildren();
-
-        pokemon.forEach((p) => {
-            const kort = document.createElement("div");
-            const navn = document.createElement("h2");
-
-            navn.textContent = p.name;
-            kort.appendChild(navn);
-            liste.appendChild(kort);
-        });
-    } catch (error) {
-        console.error("Fejl:", error);
-    }
+// Henter alle Pokémon
+function loadPokemon() {
+    fetch("http://localhost:3000/pokemon")
+        .then(response => response.json())
+        .then(pokemon => showPokemon(pokemon))
+        .catch(error => console.error(error));
 }
 
-document. getElementById("filter-knap").addEventListener("click", hentPokemon);
+// Filtrerer Pokémon via URL-parametre
+function filterPokemon() {
+    const type = document.getElementById("dropDown").value;
+    const attack = document.getElementById("attack").value;
+    const letter = document.getElementById("letter").value;
 
-hentPokemon();
+    // Starter med endpointet til alle Pokémon
+    // vi bruger let så den kan ændre sig i forhold til hvad man indtaster
+    let url = "http://localhost:3000/pokemon?";
+
+    // Tilføjer kun de filtre, der er udfyldt
+    if (type) url += `type=${encodeURIComponent(type)}&`;
+    if (attack) url += `minAttack=${encodeURIComponent(attack)}&`;
+    if (letter) url += `startsWith=${encodeURIComponent(letter)}&`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(pokemon => showPokemon(pokemon))
+        .catch(error => console.error(error));
+}
+
+// Henter Pokémon fra Power Plant
+function loadPowerPlant() {
+    fetch("http://localhost:3000/pokemon/power-plant")
+        .then(response => response.json())
+        .then(pokemon => showPokemon(pokemon))
+        .catch(error => console.error(error));
+}
+
+// Viser Pokémon på HTML-siden
+function showPokemon(pokemon) {
+    const list = document.getElementById("pokemonList");
+
+    // Rydder de tidligere resultater
+    list.innerHTML = "";
+
+    // Opretter en overskrift for hver Pokémon
+    pokemon.forEach(p => {
+        list.innerHTML += `
+            <div>
+                <h3>${p.name}</h3>
+                <p>Type: ${p.primary_type}</p>
+                <p>Attack: ${p.attack}</p>
+                <hr>
+            </div>
+        `;
+    });
+}
+
+// Viser alle Pokémon, når siden åbnes
+loadPokemon();
