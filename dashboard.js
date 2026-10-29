@@ -6,25 +6,155 @@ fetch("http://localhost:3000/dashboard/types")
         return response.json();
     })
     .then(statistics => {
-        const labels = [];
-        const amounts = [];
+        const primaryTypeNames = [];
+        const amountOfEachType = [];
 
         statistics.forEach(statistic => {
-            labels.push(statistic.primary_type);
-            amounts.push(statistic.antal);
+            primaryTypeNames.push(statistic.primary_type);
+            amountOfEachType.push(statistic.antal);
         });
 
-        const pokemonTypes = document.getElementById("types");
+        const primaryTypeChart = document.getElementById("types");
 
-        new Chart(pokemonTypes, {
-    type: "bar",
-    data: {
-        labels: ["Water", "Normal", "Poison", "Grass", "Fire", "Bug", "Electric","Rock","Ground","Psychic","Fighting","Ghost","Dragon","Fairy","Ice"],
-        datasets: [{
-            label: "Number of each Primary Type",
-            data: [28, 22, 14, 12, 12, 12, 9, 9, 8, 8, 7, 3, 3, 2, 2],
-            backgroundColor: ["blue", "lightgrey","purple","green","red","dark","yellow", "brown", "darkgrey", ""]
-        }]
-    }
-})
+        new Chart(primaryTypeChart, {
+            type: "bar",
+            data: {
+                labels: primaryTypeNames,
+                datasets: [{
+                    label: "Primary Types",
+                    data: [28, 22, 14, 12, 12, 12, 9, 9, 8, 8, 7, 3, 3, 2, 2],
+                    backgroundColor: ["dodgerblue", "tan","purple","limegreen","orange","yellowgreen","gold", "peru", "goldenrod", "hotpink","firebrick","indigo","slateblue","pink","powderblue"]
+                }]
+            }
+        })
+    });
+
+
+fetch("http://localhost:3000/dashboard/lowest-stats")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Kunne ikke hente stat-data");
+        }
+
+        return response.json();
+    })
+    .then(statistics => {
+        const pokemonNames = [];
+        const pokemonStats = [];
+
+        statistics.forEach(statistic => {
+            pokemonNames.push(statistic.name);
+            pokemonStats.push(statistic.total_stats);
+        });
+
+        // Diagrammet oprettes her, efter dataene er hentet
+        const lowestStatChart = document.getElementById("lowestStats");
+
+        new Chart(lowestStatChart, {
+            type: "bar",
+            data: {
+                // Navnene kommer nu fra dit API
+                labels: pokemonNames,
+
+                datasets: [{
+                    label: "Pokémon with lowest total stats",
+                    // Stats kommer nu fra dit API
+                    data: pokemonStats,
+                    backgroundColor: [
+                        "green",
+                        "blue",
+                        "yellow",
+                        "red",
+                        "orange"
+                    ]
+                }]
+            }
+        });
+    })
+    .catch(error => {
+        console.error("Fejl:", error);
+    });
+
+
+fetch("http://localhost:3000/dashboard/highest-speed")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Kunne ikke hente speed-data");
+        }
+
+        return response.json();
+    })
+    .then(statistics => {
+        const pokemonSpeedNames = [];
+        const pokemonSpeed = [];
+
+        statistics.forEach(statistic => {
+            pokemonSpeedNames.push(statistic.name);
+            pokemonSpeed.push(statistic.speed);
+        });
+
+        // Diagrammet oprettes, efter dataene er hentet
+        const highestSpeedChart =
+            document.getElementById("highestSpeed");
+
+        new Chart(highestSpeedChart, {
+            type: "bar",
+            data: {
+                labels: pokemonSpeedNames,
+
+                datasets: [{
+                    label: "Pokémon with highest speed",
+                    data: pokemonSpeed,
+                    backgroundColor: [
+                        "green",
+                        "yellow",
+                        "orange",
+                        "blue",
+                        "red"
+                    ]
+                }]
+            }
+        });
+    })
+    .catch(error => {
+        console.error("Fejl:", error);
+    });
+
+fetch("http://localhost:3000/dashboard/route-25")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Kunne ikke hente Route 25-data");
+        }
+
+        return response.json();
+    })
+    .then(statistics => {
+        const pokemonRouteNames = [];
+        const pokemonRoute = [];
+
+        // Går igennem hver Pokémon fra API'et og finder navn og encounter rate
+        statistics.pokemon.forEach(statistic => {
+            pokemonRouteNames.push(statistic.name);
+            pokemonRoute.push(statistic.encounter_rate);
+        });
+
+        // Finder elementet i HTML
+        const route25Chart = document.getElementById("route25");
+
+        // laver vores diagram
+        new Chart(route25Chart, {
+            type: "bar",
+            data: {
+                labels: pokemonRouteNames,
+
+                datasets: [{
+                    label: "Encounter rate on Route 25",
+                    data: pokemonRoute,
+                    backgroundColor: "limegreen"
+                }]
+            }
+        });
+    })
+    .catch(error => {
+        console.error("Fejl:", error);
     });
