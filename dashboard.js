@@ -119,3 +119,42 @@ fetch("http://localhost:3000/dashboard/highest-speed")
     .catch(error => {
         console.error("Fejl:", error);
     });
+
+fetch("http://localhost:3000/dashboard/route-25")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Kunne ikke hente Route 25-data");
+        }
+
+        return response.json();
+    })
+    .then(statistics => {
+        const pokemonRouteNames = [];
+        const pokemonRoute = [];
+
+        // Går igennem hver Pokémon fra API'et og finder navn og encounter rate
+        statistics.pokemon.forEach(statistic => {
+            pokemonRouteNames.push(statistic.name);
+            pokemonRoute.push(statistic.encounter_rate);
+        });
+
+        // Finder elementet i HTML
+        const route25Chart = document.getElementById("route25");
+
+        // laver vores diagram
+        new Chart(route25Chart, {
+            type: "bar",
+            data: {
+                labels: pokemonRouteNames,
+
+                datasets: [{
+                    label: "Encounter rate on Route 25",
+                    data: pokemonRoute,
+                    backgroundColor: "limegreen"
+                }]
+            }
+        });
+    })
+    .catch(error => {
+        console.error("Fejl:", error);
+    });
