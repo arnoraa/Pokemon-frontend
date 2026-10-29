@@ -14,9 +14,9 @@ fetch("http://localhost:3000/dashboard/types")
             amounts.push(statistic.antal);
         });
 
-        const canvas = document.getElementById("types");
+        const pokemonTypes = document.getElementById("types");
 
-        new Chart(canvas, {
+        new Chart(pokemonTypes, {
     type: "bar",
     data: {
         labels: ["Water", "Normal", "Poison", "Grass", "Fire", "Bug", "Electric","Rock","Ground","Psychic","Fighting","Ghost","Dragon","Fairy","Ice"],
