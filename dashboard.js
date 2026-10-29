@@ -106,7 +106,7 @@ fetch("http://localhost:3000/dashboard/types")
                             data: pokemonStats,
 
                             // Vælger farven på søjlerne.
-                            backgroundColor: "#79b7a5",
+                            backgroundColor: ["green", "orange","blue","grey","red"],
 
                             // Giver søjlerne afrundede hjørner.
                             borderRadius: 5,
@@ -216,7 +216,7 @@ fetch("http://localhost:3000/dashboard/types")
                             data: pokemonSpeed,
 
                             // Vælger en blå farve til søjlerne.
-                            backgroundColor: "#719bd0",
+                            backgroundColor: ["yellow","blue","purple","red","orange"],
 
                             // Afrunder søjlernes hjørner.
                             borderRadius: 5,
@@ -325,8 +325,22 @@ fetch("http://localhost:3000/dashboard/types")
                             // Værdierne for hver Pokémon.
                             data: pokemonRoute,
 
-                            // Vælger en afdæmpet orange farve.
-                            backgroundColor: "#e8b66d",
+                            // Vælger farve til søjlerne.
+                            backgroundColor: [
+                                "gold",
+                                "turquoise",
+                                "green",
+                                "yellow",
+                                "dodgerblue",
+                                "orange",
+                                "purple",
+                                "red",
+                                "brown",
+                                "pink",
+                                "gray",
+                                "lightseagreen",
+                                "violet"
+                            ],
 
                             // Afrunder søjlernes hjørner.
                             borderRadius: 5,
