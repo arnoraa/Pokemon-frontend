@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <script src="dashboard.js"></script>
+    <script src="dashboard.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
 </head>
 <body>
     <h1>Dashboard</h1>
+
+        <section>
+            <h2>Antal Pokémon pr. type</h2>
+
+            <div class="chart-container">
+                <canvas id="typeChart"></canvas>
+            </div>
+        </section>
+
 </body>
 </html>
