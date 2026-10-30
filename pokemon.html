@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Pokémon</title>
@@ -7,11 +7,49 @@
     <script src="pokemon.js" defer></script>
 </head>
 <body>
-    <h1>Pokemon</h1>
-<main id="pokemon-liste">
-    <div class="pokemon-kort">
-        <h2>"pokemon"</h2>
-    </div>
+<header>
+    <h1>Pokédex</h1>
+
+    <nav>
+        <a href="index.html">Forside</a>
+        <a href="pokemon.html">Pokémon</a>
+        <a href="trainers.html">Trainers</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+</header>
+
+
+<main>
+
+    <select id="dropDown">
+        <option value=""> All types</option>
+        <option value="water"> Water</option>
+        <option value="normal"> Normal</option>
+        <option value="poison"> Poison</option>
+        <option value="grass"> Grass</option>
+        <option value="fire"> Fire</option>
+        <option value="bug"> Bug</option>
+        <option value="electric"> Electric</option>
+        <option value="rock"> Rock</option>
+        <option value="ground"> Ground</option>
+        <option value="psychic"> Psychic</option>
+        <option value="fighting"> Fighting</option>
+        <option value="ghost"> Ghost</option>
+        <option value="dragon"> Dragon</option>
+        <option value="fairy"> Fairy</option>
+        <option value="ice"> Ice</option>
+
+    </select>
+
+    <input id="attack" type="number" placeholder="Minimum Attack">
+    <input id="letter" maxlength="1" placeholder="Starts With">
+
+
+    <button onclick="filterPokemon()"> Search</button>
+    <button onclick="loadPowerPlant()">Show Pokémon in Power Plant</button>
+
+    <div id="pokemonList"> </div>
+
 </main>
 </body>
 </html>
