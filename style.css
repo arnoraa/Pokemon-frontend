@@ -26,13 +26,29 @@ Nedenstående er til dashboard
     margin: 0 auto;
 }
 
-nav a {
-    text-decoration: none;
+
+header {
+    background-color: #d51c2f;
+    padding: 20px;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
 }
 
 header nav {
-    margin-bottom: 80px;
     display: flex;
     gap: 20px;
     justify-content: center;
 }
+
+nav a {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
