@@ -26,7 +26,14 @@ Nedenstående er til dashboard
     margin: 0 auto;
 }
 
+.dashboardh2 {
+    display: flex;
+    justify-content: center;
+}
 
+/*
+Nedenstående er til at den røde sektion øverst på siderne
+ */
 header {
     background-color: #d51c2f;
     padding: 20px;
