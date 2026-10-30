@@ -1,15 +1,16 @@
-async function hentPokemon() {
-    const type = document.getElementById("type-filter").value;
-    const minAttack = document.getElementById("attack-filter").value;
+const express = require("express");
+const router = express.Router();
 
-    const values = new URLsearchValues();
+async function hentPokemon() {
+
+    const params = new URLSearchParams();
 
     if (type) {
-        values.append("type", type);
+        params.append("type", type);
     }
 
     if (minAttack !== "") {
-        values.append("minAttack", minAttack);
+        params.append("minAttack", minAttack);
     }
     const url = `https://localhost:3000/api/pokemon?${values.toString()}`;
 
@@ -17,7 +18,7 @@ async function hentPokemon() {
         const response = await fetch(url);
 
         if (!response.ok) {
-            throw new Error("Kunne ikke hente Pokémon");
+            throw new TypeError("Kunne ikke hente Pokémon");
         }
 
         const pokemon = await response.json();
@@ -37,7 +38,4 @@ async function hentPokemon() {
         console.error("Fejl:", error);
     }
 }
-
-document. getElementById("filter-knap").addEventListener("click", hentPokemon);
-
 hentPokemon();

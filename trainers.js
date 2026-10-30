@@ -1,7 +1,6 @@
 async function hentTrainers() {
     try{
-        const response = await fetch("http://localhost:3000/api/trainers/trainer"
-        );
+        const response = await fetch("http://localhost:3000/api/trainers");
 
         if (!response.ok) {
             throw new Error("Kunne ikke hente trainers");
