@@ -100,7 +100,6 @@ function showTrainerPokemon(pokemon) {
                     headers: {
                         "Content-Type": "application/json"
                     },
-
                     body: JSON.stringify({
                         trainer_id: Number(trainer_id),
                         pokemon_id: Number(pokemon_id)
