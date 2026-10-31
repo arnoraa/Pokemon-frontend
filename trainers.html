@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <title>Trainers</title>
@@ -18,7 +18,45 @@
 
     </header>
 <main>
+    <section class="trainer-section">
+        <h2>Alle trainers</h2>
+        <div id="trainer-list"></div>
+    </section>
 
+        <section class="trainer-section">
+            <h2>Opret en Trainer:</h2>
+            <form id="trainer-form">
+                <label for="trainer-name">Trainer name:</label>
+                <input type="text" id="trainer-name" placeholder="Enter trainer name">
+
+                <label for="hometown">Hometown:</label>
+                <input type="text" id="hometown" required>
+
+                <label for="age">Age:</label>
+                <input type="text" id="age" required>
+
+                <button type="submit">Opret Trainer</button>
+            </form>
+        </section>
+
+    <section class="trainer-section">
+        <h2>Tilføj en Trainer til Pokémon</h2>
+        <form id="pokemon-form">
+            <label for="select-trainer">Vælg trainer:</label>
+            <select id="select-trainer" required>
+                <option value="">Vælg en trainer</option>
+            </select>
+
+            <label for="pokemon-id">Pokémon ID:</label>
+            <input type="number" id="pokemon-id" placeholder="Enter Pokémon ID" required>
+            <button type="submit">Tilføj Pokémon</button>
+        </form>
+    </section>
+
+    <section class="trainer-section">
+        <h2>Trænerens Pokémon</h2>
+        <div id="trainer-pokemon"></div>
+    </section>
 </main>
 </body>
 </html>
