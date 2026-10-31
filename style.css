@@ -30,7 +30,13 @@ Nedenstående er til dashboard
     display: flex;
     justify-content: center;
 }
-
+.Er-diagram {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+}
+.lowes
 /*
 Nedenstående er til at den røde sektion øverst på siderne
  */
