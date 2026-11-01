@@ -16,9 +16,9 @@
         <a href="dashboard.html"> Dashboard </a>
     </nav>
 </header>
-<main>
-    <section>
-        <h2> Velkommen til vores Pokédex </h2>
+<main class="forside-container">
+    <section class="forside-section">
+        <h1> Velkommen til vores Pokédex </h1>
 
         <p> Dette projekt er lavet som en del af vores tværfaglige midtvejsprojekt.
         Formålet er at udvikle en applikation, hvor brugeren kan udforske forskellige Pokémon,
@@ -31,37 +31,28 @@
         </p>
     </section>
 
-    <section>
-        <h2> Projektets funktioner</h2>
+    <section class="forside-section">
+        <h1> Projektets funktioner</h1>
 
-        <p> På vores hjemmeside kan du</p>
-
-        <ul>
-            <li> Se og filtrere Pokémon</li>
-            <li> Se og adminstrere Trainers</li>
-            <li> Se hvilke Pokémon der er på lokationen Power Plant</li>
-            <li> Se nogle visualiserede statistikker i vores dashboard</li>
-        </ul>
-
+        <h2> På vores hjemmeside kan du</h2>
+        <div class="funktioner">
+            <ul>
+                <li> Se og filtrere Pokémon</li>
+                <li> Se og adminstrere Trainers</li>
+                <li> Se hvilke Pokémon der er på lokationen Power Plant</li>
+                <li> Se nogle visualiserede statistikker i vores dashboard</li>
+            </ul>
+        </div>
     </section>
-<section>
-    <h2> Database og dokumentation</h2>
+<section class="forside-section">
+    <h1> Database og dokumentation</h1>
     <p> Som en del af projektet skulle vi udvide den eksisterende Pokémon database.
     Det har vi valgt at gøre ved at oprette en tabel som hedder location </p>
 </section>
 
-    <section>
-        <h2> Link til DDL script herunder</h2>
-        <p>
-            <a href="https://github.com/arnoraa/Pokemon-backend/blob/main/pokemon-location-export.sql"
-               target="_blank">
-                Se DDL-script på GitHub
-            </a>
-        </p>
-        <h2 class="dashboardh2"> EER</h2>
-        <div class="erDiagramcontainer">
-            <img src="EER.png" alt="ER-diagram over Pokédex-databasen">
-        </div>
-    </section>
+    <footer>
+        <p>Pokémon - Tværfagligt Midtvejsprojekt</p>
+    </footer>
+</main>
 </body>
 </html>
