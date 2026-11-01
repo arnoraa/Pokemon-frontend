@@ -31,11 +31,12 @@ async function hentTrainers() {
             try {
                 const response = await fetch(`http://localhost:3000/api/trainers/pokemon?id=${trainerId}`);
 
-            if (response.ok) {
-                throw new Error("Kunne ikke hente trainer");
+            if (!response.ok) {
+                throw new Error("Kunne ikke hente trainerens Pokémon");
             }
 
             const pokemon = await response.json();
+            console.log(pokemon);
             showTrainerPokemon(pokemon);
 
         } catch (error) {
@@ -48,16 +49,20 @@ function showTrainerPokemon(pokemon) {
 
     list.innerHTML = "";
 
+    if (pokemon.length === 0) {
+        list.innerHTML = "<p>Trainer har ingen Pokémon endnu.</p>";
+        return;
+    }
+
     pokemon.forEach((p) => {
         list.innerHTML += `
-        <div>
-            <h2>${p.name}</h2>
-            <p>Type: ${p.primary_type}</p>
-            <p>Attack: ${p.attack}</p>
-            <hr>
-        </div>`;
-    });
-}
+            <div class="pokemon-card">
+                <h2>${p.name}</h2>
+                <p>Type: ${p.primary_type}</p>
+                <p>Attack: ${p.attack}</p>
+            </div>`;
+        });
+    }
         async function createTrainer(event) {
             event.preventDefault();
 
@@ -95,29 +100,36 @@ function showTrainerPokemon(pokemon) {
                 const trainer_id = document.getElementById("select-trainer").value;
                 const pokemon_id = document.getElementById("pokemon-id").value;
 
-                const response = await fetch("http://localhost:3000/api/trainers/catch", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                console.log("Trainer ID:", trainer_id);
+                console.log("Pokemon ID:", pokemon_id);
 
-                    body: JSON.stringify({
-                        trainer_id: Number(trainer_id),
-                        pokemon_id: Number(pokemon_id)
-                    })
-                });
+                try {
+                    const response = await fetch("http://localhost:3000/api/trainers/catch", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
 
-                const result = await response.json();
+                        body: JSON.stringify({
+                            trainer_id: Number(trainer_id),
+                            pokemon_id: Number(pokemon_id),
+                        })
+                    });
 
-                if (response.ok) {
-                    alert("Pokémon tilføjet!");
-                    document.getElementById("pokemon-form").reset();
-                } else {
-                    alert(result.error);
-                }
+                    const result = await response.json();
+                    console.log(result);
+
+                    if (response.ok) {
+                        alert("Pokémon tilføjet!");
+                        document.getElementById("pokemon-form").reset();
+                    } else {
+                        alert(result.error);
+                    }
+                } catch (error) {
+                console.error("Fejl:", error);}
             }
 
             document.getElementById("trainer-form").addEventListener("submit", createTrainer);
             document.getElementById("pokemon-form").addEventListener("submit", addPokemon);
 
-await hentTrainers();
+hentTrainers();
