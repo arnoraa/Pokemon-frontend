@@ -58,8 +58,9 @@ function showTrainerPokemon(pokemon) {
         list.innerHTML += `
             <div class="pokemon-card">
                 <h2>${p.name}</h2>
-                <p>Type: ${p.primary_type}</p>
-                <p>Attack: ${p.attack}</p>
+                <p><strong>Type:</strong> ${p.primary_type}</p>
+                <p><strong>Attack:</strong> ${p.attack}</p>
+                <p><strong>Pokémon ID:</strong> ${p.pokedex_number}</p>
             </div>`;
         });
     }
