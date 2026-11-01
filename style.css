@@ -30,6 +30,22 @@ Nedenstående er til dashboard
     display: flex;
     justify-content: center;
 }
+
+    .erDiagramcontainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+    }
+
+    .erDiagramcontainer img {
+        display: block;
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
+        margin: 0 auto;
+    }
 /*
 Nedenstående er til trainers.html
  */
@@ -113,5 +129,4 @@ nav a {
     padding: 10px 20px;
     border-radius: 5px;
 }
-
 

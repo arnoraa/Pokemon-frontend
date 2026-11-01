@@ -1,5 +1,5 @@
 async function hentTrainers() {
-    const response = await fetch("http://localhost:3000/api/trainers");
+    const response = await fetch("http://localhost:3000/trainer");
     const trainers = await response.json();
 
     showTrainers(trainers);
@@ -29,7 +29,7 @@ async function hentTrainers() {
     }
         async function loadTrainerPokemon(trainerId) {
             try {
-                const response = await fetch(`http://localhost:3000/api/trainers/pokemon?id=${trainerId}`);
+                const response = await fetch(`http://localhost:3000/trainer/pokemon?id=${trainerId}`);
 
             if (!response.ok) {
                 throw new Error("Kunne ikke hente trainerens Pokémon");
@@ -72,7 +72,7 @@ function showTrainerPokemon(pokemon) {
             const age = document.getElementById("age").value;
 
 
-            const response = await fetch("http://localhost:3000/api/trainers/new", {
+            const response = await fetch("http://localhost:3000/trainer/new", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -105,7 +105,7 @@ function showTrainerPokemon(pokemon) {
                 console.log("Pokemon ID:", pokemon_id);
 
                 try {
-                    const response = await fetch("http://localhost:3000/api/trainers/catch", {
+                    const response = await fetch("http://localhost:3000/trainer/catch", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
