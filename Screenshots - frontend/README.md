@@ -55,6 +55,14 @@ Funktioner og statistikker:
 - Pokémon på Route 25.
 
 
+INSTALLATION OG OPSÆTNING
+
+1. clone repository: "https://github.com/arnoraa/Pokemon-frontend.git"
+
+2. Backend serveren og MySQL-databasen skal køre, så at frontend kan hente data fra API'et
+   
+
+
 -- Forbindelse til backend
 
 Frontend kommunikerer med vores eget backend-API ved
